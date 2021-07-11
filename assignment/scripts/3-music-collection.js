@@ -57,10 +57,33 @@ function findByArtist(artistName) {
 
 console.log(findByArtist('Ween'));
 
-// Add a function named findByArtist. This function should:
+/*
+* Search
+*
+*/
 
-// Take in artist (a string) parameter
-// Create an array to hold any results, empty to start
-// Loop through the collection and add any objects with a matching artist to the array.
-// Return the array with the matching results. If no results are found, return an empty array.
-// Test the findByArtist function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
+function search(find = {}) {
+  if(Object.keys(find).length === 0) {
+    return collection;
+  }
+
+  let finalValue = [];
+
+  for(const key of collection) {
+    console.log(key.artist);
+    if(key.artist === find.artist && key.yearPublished === find.yearPublished) {
+      finalValue.push(key);
+    }
+  }
+
+  return finalValue;
+}
+
+const findObj = {
+  artist: 'Ween',
+  yearPublished: '1992'
+};
+
+const empty = {};
+
+console.log(search(empty));
