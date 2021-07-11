@@ -6,25 +6,26 @@ let collection = [];
 * Add to Collection
 * Adds objects into an array
 */
-function AddToCollection(title, artist, yearPublished) {
+function AddToCollection(title, artist, yearPublished, tracks) {
   const album = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    tracks: tracks
   };
 
   collection.push(album);
 }
 
-AddToCollection('The Mollusk', 'Ween', '1997');
-AddToCollection('Pure Guava', 'Ween', '1992');
+AddToCollection('The Mollusk', 'Ween', '1997', ['Im Dancing in the show Tonight', 'The Mollusk', 'Polka Dot Tail']);
+AddToCollection('Pure Guava', 'Ween', '1992', ['Little Birdy', 'Sarah']);
 AddToCollection('American Beauty', 'Grateful Dead', '1970');
 AddToCollection('Rift', 'Phish', '1993');
-AddToCollection('Animals', 'Pink Floyd', '1977');
+AddToCollection('Animals', 'Pink Floyd', '1977', ['Pigs on the Wing', 'Dogs', 'Sheep']);
 AddToCollection('All Things Must Pass', 'George Harrison', '1970');
 AddToCollection('Trans-Continental Hustle', 'Gogol Bordello', '2010');
 
-console.log(collection);
+// console.log(collection);
 
 /*
 * Show Collection
@@ -38,7 +39,7 @@ function showCollection(array) {
   } 
 }
 
-showCollection(collection);
+// showCollection(collection);
 
 /*
 * Find By Arrist
@@ -55,7 +56,7 @@ function findByArtist(artistName) {
   return foundArtist;
 }
 
-console.log(findByArtist('Ween'));
+// console.log(findByArtist('Ween'));
 
 /*
 * Search
@@ -71,19 +72,19 @@ function search(find = {}) {
 
   for(const key of collection) {
     console.log(key.artist);
-    if(key.artist === find.artist && key.yearPublished === find.yearPublished) {
+    if(key.artist === find.artist && key.yearPublished === find.yearPublished && collection.tracks.includes(find.track)) {
       finalValue.push(key);
     }
   }
-
   return finalValue;
 }
 
 const findObj = {
   artist: 'Ween',
-  yearPublished: '1992'
+  yearPublished: '1992',
+  track: 'The Mollusk'
 };
 
 const empty = {};
 
-console.log(search(empty));
+console.log(search(findObj));
