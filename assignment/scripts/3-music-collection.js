@@ -36,12 +36,8 @@ function showCollection(array) {
   console.log(array.length);
   for (const item of array){
     console.log(item.title, 'by', item.artist, 'published in', item.yearPublished);
-    console.log(item.tracks);
     for(let i = 0; i < item.tracks.length; i++) {
       console.log(i+1, item.tracks[i].name, ':', item.tracks[i].duration);
-    }
-    for (const tract of item.tracks) {
-      console.log(tract);
     }
   } 
 }
